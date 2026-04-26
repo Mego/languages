@@ -6,7 +6,7 @@ RUN curl -L https://codeberg.org/ngn/k/archive/$K_REV.tar.gz | \
     tar -xz && \
     cd k && \
     sed -i 's/march=native/march=znver1/g' makefile && \
-    make -j $(nproc) CC=gcc && \
+    make -j $(nproc) CC="gcc -Wno-discarded-qualifiers" && \
     mv k /usr/local/bin/ && \
     cd / && \
     rm -rf /tmp/k
